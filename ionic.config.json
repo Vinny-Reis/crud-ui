@@ -1,0 +1,7 @@
+{
+  "name": "crud-ui",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
