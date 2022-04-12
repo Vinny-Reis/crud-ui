@@ -19,12 +19,12 @@ const routes: Routes = [
   {
     path: 'empresas',
     loadChildren: () => import('./pages/empresas/empresas.module').then( m => m.EmpresasModule)
+  },
+  {
+    path: 'categorias',
+    loadChildren: () => import('./pages/categorias/categorias.module').then (m => m.CategoriasModule)
   }
   
-
-
-
-
 ];
 
 @NgModule({

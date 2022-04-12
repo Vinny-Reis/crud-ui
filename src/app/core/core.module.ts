@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CategoriasService } from '../pages/categorias/categorias.service';
 import { ClientesService } from '../pages/clientes/clientes.service';
 import { EmpresasService } from '../pages/empresas/empresas.service';
-//import { Categorias } from './models/categorias.model';
+
 
 @NgModule({
   declarations: [ ],
@@ -10,7 +11,7 @@ import { EmpresasService } from '../pages/empresas/empresas.service';
     RouterModule
   ],
   providers: [
-    //CategoriasService,
+    CategoriasService,
     ClientesService,
     EmpresasService
   ],
