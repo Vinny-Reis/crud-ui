@@ -11,37 +11,39 @@ import { CategoriasService } from '../categorias.service';
 export class CategoriasListaComponent implements OnInit {
 
   categorias: any[] = [];
-
   constructor(
-    private categoriaService: CategoriasService,
+    private categoriasService: CategoriasService,
     private alert: AlertService,
     private toast: ToastService
   ) { }
 
-  ngOnInit(
-  ) {
+  ngOnInit() { }
+
+  ionViewDidEnter(){
     this.carregarLista();
-  }
+   }
+
 
   carregarLista() {
-    this.categoriaService.getAll()
+    this.categoriasService.getAll()
       .then(obj => {
         this.categorias = obj;
       })
   }
+
   remove(categorias: any) {
-    this.alert.showConfirmDelete(categorias.cnpj, () => this.executeRemove(categorias));
+    this.alert.showConfirmDelete(categorias.descricao, () => this.executeRemove(categorias));
   }
 
-  executeRemove(emp: any){
+  executeRemove(categoria: any){
     try {
-      const index = this.categorias.indexOf(emp);
+      const index = this.categorias.indexOf(categoria);
       this.categorias.splice(index, 1);
-      this.categoriaService.delete(emp.id);
+      this.categoriasService.delete(categoria.id);
 
-      this.toast.showSucess('Categorias removido com sucesso');
+      this.toast.showSucess('Cliente removido com sucesso');
     } catch (error) {
-      this.toast.showError('Erro ao remover o categoria');
+      this.toast.showError('Erro ao remover o cliente');
     }
   }
 }

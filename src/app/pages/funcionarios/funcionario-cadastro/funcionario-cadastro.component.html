@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ editando ? 'Edição' : 'Cadastro'}} Funcionario</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="funcionarios"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+
+    <ion-item>
+      <ion-label position="stacked">Nome</ion-label>
+      <ion-input [(ngModel)]="funcionarios.nome" name="nome" #nome="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">CPF</ion-label>
+      <ion-input [(ngModel)]="funcionarios.cpf" name="cpf" #cpf="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">RG</ion-label>
+      <ion-input [(ngModel)]="funcionarios.rg" name="rg" #rg="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Data Nascimento</ion-label>
+      <ion-input [(ngModel)]="funcionarios.dataNasc" name="dataNasc" #dataNasc="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Salario</ion-label>
+      <ion-input [(ngModel)]="funcionarios.salario" name="salario" #salario="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Departamento</ion-label>
+      <ion-input [(ngModel)]="funcionarios.departamento" name="departamento" #departamento="ngModel" required></ion-input>
+    </ion-item>
+  
+    <ion-button type="submit" class="ion-padding" [disabled]="form.invalid" color="primary" expand="block">
+      Salvar
+    </ion-button>
+  </form>
+</ion-content>

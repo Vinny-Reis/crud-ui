@@ -14,7 +14,7 @@ const routes: Routes = [
   component: CategoriaCadastroComponent
 },
 {
-  path: 'id',
+  path: ':id',
   component: CategoriaCadastroComponent
 }
 

@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button color="danger"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Funcionarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let funcionario of funcionarios">
+      <ion-label>
+        <h1>Nome: {{funcionario.nome}}</h1>
+        <p class="ion-text-wrap">CPF: {{funcionario.cpf}}</p>
+        <p class="ion-text-wrap">RG: {{funcionario.rg}}</p>
+        <p class="ion-text-wrap">Data Nasc: {{funcionario.dataNasc}}</p>
+        <p class="ion-text-wrap">Salario: {{funcionario.salario}}</p>
+        <p class="ion-text-wrap">Departamento: {{funcionario.departamento}}</p>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="primary" 
+            [routerLink]="['/funcionarios', funcionario.id]">
+              <ion-icon slot="start" name="pencil"></ion-icon>
+              Editar
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button expand="block" color="danger" fill="outline" 
+            (click)="remove(funcionario)">
+              <ion-icon slot="start" name="trash"></ion-icon>
+              Excluir
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-label>
+    </ion-item>
+   
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="primary">
+    <ion-fab-button [routerLink]="['novo']" routerLinkActive="router-link-active" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
