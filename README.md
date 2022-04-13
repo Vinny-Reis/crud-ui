@@ -2,9 +2,6 @@
 
 
 
-
-
-
 APP IONIC CRUD
 
 
