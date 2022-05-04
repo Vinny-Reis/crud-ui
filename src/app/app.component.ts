@@ -10,7 +10,8 @@ export class AppComponent {
     { title: 'Clientes',    url: 'clientes',    icon: 'people' },
     { title: 'Empresas',    url: 'empresas',    icon: 'business' },
     { title: 'Categorias',  url: 'categorias',  icon: 'people' },
-    { title: 'Funcionarios', url: 'funcionarios', icon: 'people' }
+    { title: 'Funcionarios', url: 'funcionarios', icon: 'people' },
+    { title: 'Produtos',     url: 'produtos',     icon: 'people' }
     
   ];
   // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

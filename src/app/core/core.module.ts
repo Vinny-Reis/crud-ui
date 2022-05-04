@@ -4,6 +4,7 @@ import { CategoriasService } from '../pages/categorias/categorias.service';
 import { ClientesService } from '../pages/clientes/clientes.service';
 import { EmpresasService } from '../pages/empresas/empresas.service';
 import { FuncionariosService } from '../pages/funcionarios/funcionarios.service';
+import { ProdutosService } from '../pages/produtos/produtos.service';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { FuncionariosService } from '../pages/funcionarios/funcionarios.service'
     FuncionariosService,
     CategoriasService,
     ClientesService,
+    ProdutosService,
     EmpresasService
   ],
   exports: [ ],
