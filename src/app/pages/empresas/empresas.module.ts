@@ -9,6 +9,7 @@ import { EmpresaCadastroComponent } from './empresa-cadastro/empresa-cadastro.co
 
 
 
+
 @NgModule({
   declarations: [
     EmpresasListaComponent,
@@ -19,6 +20,7 @@ import { EmpresaCadastroComponent } from './empresa-cadastro/empresa-cadastro.co
     FormsModule,
     IonicModule,
     EmpresasRoutingModule
-  ]
+  ],
+ 
 })
 export class EmpresasModule { }

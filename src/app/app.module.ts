@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app.routing';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './pages/home/home.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -21,7 +22,11 @@ import { HomeModule } from './pages/home/home.module';
     CoreModule
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    
+
+    { provide: RouteReuseStrategy,
+       useClass: IonicRouteStrategy,
+    }
     
   ],
   bootstrap: [AppComponent],

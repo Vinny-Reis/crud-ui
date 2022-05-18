@@ -7,6 +7,8 @@ import { Empresas } from 'src/app/core/models/empresas.model';
 import { ToastService } from 'src/app/core/services/toast.service';
 import { Regex } from 'src/app/core/validators/regex.model';
 import { EmpresasService } from '../empresas.service';
+import { GovService } from 'src/app/core/services/gov.service';
+import { TouchSequence } from 'selenium-webdriver';
 
 
 @Component({
@@ -21,6 +23,7 @@ export class EmpresaCadastroComponent implements OnInit {
   idempr: string;
   
   constructor(
+    private govService: GovService,
     private toast: ToastService,
     private empresaService: EmpresasService,
     private route: ActivatedRoute,
@@ -68,7 +71,83 @@ export class EmpresaCadastroComponent implements OnInit {
 
   } 
     atualizarTituloEdicao() {
-    this.title.setTitle(`Edição de Cliente: ${this.empresas.razaoSocial}`);
+    this.title.setTitle(`Edição de Cliente: ${this.empresas.cnpj}`);
+  }
+
+
+  consultaCEP(cep, form){
+    let newCep = cep.model;
+    newCep = newCep.replace(/\D/g, '');
+    if (newCep !== null && newCep !== '') {
+      this.resetFormCep(form);
+      this.govService
+        .consultaCEP(newCep)
+        .subscribe((dados) => 
+        this.populaCEPForm(dados, form));
+    }
+  }
+
+  populaCEPForm(dados, formulario) {
+    formulario.form.patchValue({
+      logradouro: dados.logradouro.toUpperCase(),
+      localidade: dados.localidade.toUpperCase(),
+      bairro: dados.bairro.toUpperCase(),
+      numero: dados.numero,
+      complemento: dados.complemento.toUpperCase(),
+      uf: dados.uf.toUpperCase(),
+    });
+  }
+
+  resetFormCep(formulario) {
+    formulario.form.patchValue({
+      logradouro: null,
+      localidade: null,
+      bairro: null,
+      numero: null,
+      complemento: null,
+      uf: null,
+    });
+  }
+  consultaCNPJ(cnpj, form){
+    console.log(cnpj);
+    let newCnpj = cnpj.model;
+    newCnpj = newCnpj.replace(/\D/g, '');
+  
+    if( newCnpj != null && newCnpj !== ''){
+      this.resetaCnpjForm(form);
+      this.govService.consultaCNPJ(newCnpj)
+      .subscribe((dados) => 
+      this.populaCnpjForm(dados, form));
+      console.log(form);
+    }
+  }
+
+  populaCnpjForm(dados, formulario){
+  
+    formulario.form.patchValue({
+      razao_social: dados.razao_social.toUpperCase(),
+      cep: dados.cep,
+      logradouro: dados.logradouro.toUpperCase(),
+      numero: dados.numero,
+      complemento: dados.complemento.toUpperCase(),
+      bairro: dados.bairro.toUpperCase(),
+      uf: dados.uf.toUpperCase(),
+      ddd_telefone_1: dados.ddd_telefone_1
+    })
+    this.empresas.localidade = dados.municipio.toUpperCase();
+  }
+
+  resetaCnpjForm(formulario){
+    formulario.form.patchValue({
+      razao_social: null,
+      cep: null,
+      logradouro: null,
+      numero: null,
+      complemento: null,
+      bairro: null,
+      uf: null,
+      ddd_telefone_1: null
+    })
   }
 
 }

@@ -9,17 +9,72 @@
   
   <ion-content class="ion-padding">
     <form (ngSubmit)="onSubmit()" #form="ngForm">
-  
+
+
       <ion-item>
         <ion-label position="stacked">Cnpj</ion-label>
-        <ion-input [(ngModel)]="empresas.cnpj" name="cnpj" #cnpj="ngModel" required></ion-input>
+        <ion-input  [(ngModel)]="empresas.cnpj" (ionBlur)="consultaCNPJ(cnpj, form)" 
+        maxlength="14" name="cnpj" #cnpj="ngModel" required></ion-input>
       </ion-item>
   
       <ion-item>
-        <ion-label position="stacked">razaoSocial</ion-label>
-        <ion-input [(ngModel)]="empresas.razaoSocial" name="razaoSocial" #razaoSocial="ngModel" required></ion-input>
+        <ion-label position="stacked">Razão Social</ion-label>
+        <ion-input [(ngModel)]="empresas.razao_social" name="razao_social" #razao_social="ngModel" required></ion-input>
       </ion-item>
   
+      <ion-item>
+        <ion-label position="stacked">Cep</ion-label>
+        <ion-input 
+        [(ngModel)]="empresas.cep" (ionBlur)="consultaCEP(cep, form)" 
+        maxlength="8" id="cep" name="cep" #cep="ngModel" required></ion-input>
+
+    
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Logradouro</ion-label>
+        <ion-input [(ngModel)]="empresas.logradouro" 
+        name="logradouro" #logradouro="ngModel" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Numero</ion-label>
+        <ion-input [(ngModel)]="empresas.numero" 
+        name="numero" #numero="ngModel" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Complemento</ion-label>
+        <ion-input [(ngModel)]="empresas.complemento" 
+        name="complemento" #complemento="ngModel" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Bairro</ion-label>
+        <ion-input [(ngModel)]="empresas.bairro" 
+        name="bairro" #bairro="ngModel" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Localidade</ion-label>
+        <ion-input [(ngModel)]="empresas.localidade" 
+        name="localidade" #localidade="ngModel" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Uf</ion-label>
+        <ion-input [(ngModel)]="empresas.uf" 
+        name="uf" #uf="ngModel" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">DDD-Telefone</ion-label>
+        <ion-input [(ngModel)]="empresas.ddd_telefone_1" 
+        name="ddd_telefone_1" #ddd_telefone_1="ngModel" required></ion-input>
+      </ion-item>
+
+
+
       <ion-button type="submit" class="ion-padding" [disabled]="form.invalid" color="primary" expand="block">
         Salvar
       </ion-button>
